@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Memory Match — Find every matching pair</title>
+  <meta name="description" content="A clean, responsive, and playful memory card game built with vanilla HTML, CSS, and JavaScript." />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app-container">
+    <!-- Header -->
+    <header class="game-header">
+      <div class="header-content">
+        <h1 class="game-title">Memory Match</h1>
+        <p class="game-subtitle">Find every matching pair.</p>
+      </div>
+
+      <!-- Stats Bar & Controls -->
+      <section class="stats-panel" aria-label="Game Statistics">
+        <div class="stat-card" id="stat-moves">
+          <span class="stat-label">Moves</span>
+          <span class="stat-value" id="moves-count" aria-live="polite">0</span>
+        </div>
+        <div class="stat-card" id="stat-matches">
+          <span class="stat-label">Matches</span>
+          <span class="stat-value" id="matches-count" aria-live="polite">0/8</span>
+        </div>
+        <div class="stat-card" id="stat-time">
+          <span class="stat-label">Time</span>
+          <span class="stat-value" id="timer-display" aria-live="off">00:00</span>
+        </div>
+        <button class="btn btn-primary" id="btn-restart" type="button" aria-label="Start a new game">
+          <svg class="icon-restart" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21.5 2v6h-6M21 12a9 9 0 1 1-2.64-6.36L21 8"/>
+          </svg>
+          <span>New Game</span>
+        </button>
+      </section>
+    </header>
+
+    <!-- Game Board -->
+    <main class="game-main">
+      <div 
+        class="game-grid" 
+        id="game-grid" 
+        role="grid" 
+        aria-label="Memory Card Board, 4 columns by 4 rows">
+        <!-- Cards injected dynamically via script.js -->
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="game-footer">
+      <p>Crafted with clean Vanilla JavaScript &bull; Keyboard Friendly</p>
+    </footer>
+  </div>
+
+  <!-- Win Modal Overlay -->
+  <div class="modal-overlay hidden" id="win-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" aria-describedby="modal-desc">
+    <div class="modal-card">
+      <div class="modal-badge" aria-hidden="true">🎉</div>
+      <h2 class="modal-title" id="modal-title">Well done!</h2>
+      <p class="modal-desc" id="modal-desc">You successfully matched all the pairs.</p>
+
+      <div class="modal-stats">
+        <div class="modal-stat-item">
+          <span class="modal-stat-label">Total Time</span>
+          <span class="modal-stat-value" id="final-time">00:00</span>
+        </div>
+        <div class="modal-stat-item">
+          <span class="modal-stat-label">Total Moves</span>
+          <span class="modal-stat-value" id="final-moves">0</span>
+        </div>
+        <div class="modal-stat-item">
+          <span class="modal-stat-label">Pairs Matched</span>
+          <span class="modal-stat-value" id="final-matches">8/8</span>
+        </div>
+      </div>
+
+      <div class="modal-actions">
+        <button class="btn btn-primary btn-large" id="btn-play-again" type="button">Play Again</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
